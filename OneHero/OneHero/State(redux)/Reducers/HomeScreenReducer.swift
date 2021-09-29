@@ -14,7 +14,7 @@ struct HomeScreenReducer {
         switch action {
         case let act as HomeScreenActions.HomeScreenAction:
             switch act {
-            case let .setUserProfile(characters):
+            case let .setMarvelCharacterProfile(characters):
                 state.characters = characters ?? [MarvelCharacter]()
             case let .updateRetrievalState(newState):
                 state.retrievalState = newState

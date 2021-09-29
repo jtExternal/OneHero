@@ -12,14 +12,12 @@ func appReducer(action: Action, state: AppState?) -> AppState {
     var state = state ?? AppState.initialAppState()
 
     switch action {
-    case _ as LogoutResetStates:
-        state = AppState.initialAppState()
     default:
         state = AppState(
             routingState: RoutingReducer.routingReducer(action: action, state: state.routingState),
             homeScreenState: HomeScreenReducer.homeScreenReducer(action: action, state: state.homeScreenState),
             mainViewState: mainReducer(action: action, state: state.mainViewState),
-            userProfileState: AboutCharacterProfileReducer.aboutCharacterProfileReducer(action: action, state: state.userProfileState)
+            marvelCharacterProfileState: AboutCharacterProfileReducer.aboutCharacterProfileReducer(action: action, state: state.marvelCharacterProfileState)
         )
     }
 

@@ -17,10 +17,10 @@ public struct MarvelCharacter: Decodable, Equatable {
     public let id: Int
     public let name: String?
     public let description: String?
-    public let thumbnail: Thumbnail?
+    public let thumbnail: MarvelImage?
     public let urls: [MarvelURL]?
     
-    public init(id: Int = 0, name: String? = nil, description: String? = nil, thumbnail: Thumbnail? = nil, urls: [MarvelURL]? = nil) {
+    public init(id: Int = 0, name: String? = nil, description: String? = nil, thumbnail: MarvelImage? = nil, urls: [MarvelURL]? = nil) {
         self.id = id
         self.name = name
         self.description = description

@@ -13,11 +13,11 @@ struct AboutCharacterProfileReducer {
         var state = state ?? AboutCharacterProfileState.initialUserProfileState()
 
         switch action {
-        case let a as UserProfileActions.UserProfileAction:
+        case let a as CharacterProfileActions.CharacterProfileAction:
             switch a {
             case .fetchUserProfile:
                 state.fetchProfileOperationState = .fetching
-            case let .setUserProfile(profile):
+            case let .setMarvelCharacterProfile(profile):
                 state.userProfile = profile
             case let .updateRetrievalState(newState):
                 state.fetchProfileOperationState = newState

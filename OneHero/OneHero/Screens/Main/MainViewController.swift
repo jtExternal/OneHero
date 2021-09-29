@@ -11,13 +11,13 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var collectionView: PagedCollectionView!
     private let refreshControl = UIRefreshControl()
     private var loadingInit = false
-    var selectedCell: CharacterCollectionViewCell?
     private var selectedCellImageViewSnapshot: UIView?
     private var animator: Animator?
     private var dataSource: MainCollectionViewDataSource?
+    private var totalCollectionItems = 10
     var page: Int = 0
     var isLoading:Bool = false
-    private var totalCollectionItems = 10
+    var selectedCell: CharacterCollectionViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,13 +62,13 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
             OneHeroProgressView.shared.hideProgressView()
         }
     }
-
+    
     func showLoading() {
         DispatchQueue.main.async {
             OneHeroProgressView.shared.showProgressView()
         }
     }
-
+    
     
     private func setupRefreshControl() {
         refreshControl.addTarget(self, action: #selector(refreshList(_:)), for: .valueChanged)
@@ -91,10 +91,12 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         
         self.isLoading = true
         
+        // Update the state with new paging index
         store.dispatch(HomeScreenActions.HomeScreenAction.setStartEndPagingIndex(pagingIndex: PagingIndex(start: page)))
         store.dispatch(HomeScreenActionCreators().getCharacters)
     }
     
+    // We received a new batch of characters and now we need to refresh collection
     func setDataSource(marvelCharacters: [MarvelCharacter]) {
         dataSource = MainCollectionViewDataSource(marvelCharacters: marvelCharacters)
         
@@ -118,20 +120,17 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension MainViewController: UICollectionViewDelegate {
+extension MainViewController: UIViewControllerTransitioningDelegate, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let data =  dataSource?.getMarvelCharacters()?[indexPath.row] else {
             return
         }
-
+        
         store.dispatch(HomeScreenActions.HomeScreenAction.setSelectedCharacter(profile: data))
-        store.dispatch(UserProfileActions.UserProfileAction.setUserProfile(profile: data))
+        store.dispatch(CharacterProfileActions.CharacterProfileAction.setMarvelCharacterProfile(profile: data))
         store.dispatch(HomeScreenActions.HomeScreenAction.presentPopover(presentPopover: .present))
     }
     
-}
-
-extension MainViewController: UIViewControllerTransitioningDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width - 10) / 2
         return .init(width: width, height: width)
@@ -205,36 +204,33 @@ extension MainViewController: StoreSubscriber {
     }
 }
 
-extension MainViewController: PagedCollectionViewDelegate {
-  func collectionView(
-    _ collectionView: PagedCollectionView,
-    needsDataForPage page: Int,
-    completion: (Int, NSError?) -> Void
-  ) {
-      let dat = dataSource?.getMarvelCharacters()?.count ?? 0
-      
-    // Typically request your data over network, update your data source and refresh UI
-//    totalCollectionItems += collectionView.elementsPerPage
-      if !isLoading {
-          fetchNotifications(page: dat + collectionView.elementsPerPage)
-        completion(collectionView.elementsPerPage, nil)
-      }
-
-//    collectionView.reloadData()
-  }
-}
-
-
 // Note: If you override the delegate for your PagedTableView or PagedCollectionView like:
 // tableView.delegate = <UITableViewDelegate conformant object>
 // you need to forward the scrolling events to automatically load new pages if needed.
 // See the code below on how to do this.
 
-  extension MainViewController: UIScrollViewDelegate {
+extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
         collectionView.scrollViewDidScroll(collectionView)
-
     }
-  }
- 
+}
+
+extension MainViewController: PagedCollectionViewDelegate {
+    func collectionView(
+        _ collectionView: PagedCollectionView,
+        needsDataForPage page: Int,
+        completion: (Int, NSError?) -> Void
+    ) {
+        let marvelCharactersCount = dataSource?.getMarvelCharacters()?.count ?? 0
+        
+        // Typically request your data over network, update your data source and refresh UI
+        //    totalCollectionItems += collectionView.elementsPerPage
+        if !isLoading {
+            fetchNotifications(page: marvelCharactersCount + collectionView.elementsPerPage)
+            completion(collectionView.elementsPerPage, nil)
+        }
+        
+        //    collectionView.reloadData()
+    }
+}
+

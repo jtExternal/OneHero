@@ -68,6 +68,16 @@ enum Stylesheet {
                 $0.font = Assets.Font.workSansRegFont.getFont().withSize(14.0)
                 $0.minimumScaleFactor = 0.5
             }
+            
+            
+            /// Medium Work Sans Font - Dark Grey - 28 pts
+            static let oneHeroTitleWhiteMedium18 = Style<UILabel> {
+                $0.textColor = UIColor.Palette.ghostWhite
+                $0.font = Assets.Font.workSansSemiBoldFont.getFont().withSize(18.0)
+                $0.minimumScaleFactor = 0.5
+                $0.adjustsFontSizeToFitWidth = true
+                $0.adjustsFontForContentSizeCategory = true
+            }
 
             /// Regular Work Sans Font - Dark Grey - 15 pts - Attributed
             static let oneHeroFormLabelTitleAttributedDarkGreyRegular15 = Style<UILabel> {

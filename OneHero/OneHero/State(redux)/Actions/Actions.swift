@@ -13,6 +13,3 @@ struct NavigationBackAction: Action {}
 struct SetMenuTitleAction: Action {
     let menuTitle: String
 }
-
-/// Logout and reset all states; free memory
-struct LogoutResetStates: Action {}

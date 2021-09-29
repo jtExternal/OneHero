@@ -10,8 +10,8 @@ import UIKit
 
 final class CharacterCollectionViewCell: UICollectionViewCell {
     static let reuseId = "collectionViewCharacterCell"
-    @IBOutlet private(set) var locationImageView: UIImageView!
-    @IBOutlet private(set) var locationLabel: UILabel!
+    @IBOutlet private(set) var characterImageView: UIImageView!
+    @IBOutlet private(set) var characterTitle: UILabel!
     var characterData:MarvelCharacter?
     
     private lazy var setupOnce: Void = {
@@ -24,6 +24,7 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.2
         layer.masksToBounds = false
         layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
+        characterTitle.apply(Stylesheet.Main.Labels.oneHeroTitleWhiteMedium18)
     }()
     
     
@@ -34,7 +35,7 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(title: String, characterImage: UIImage) {
-        locationImageView.image = characterImage
-        locationLabel.text = title
+        characterImageView.image = characterImage
+        characterTitle.text = title
     }
 }

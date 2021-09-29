@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YDl-MN-WBp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -76,8 +77,8 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="175" height="224"/>
                                         <connections>
-                                            <outlet property="locationImageView" destination="DE7-ez-eEi" id="Zmt-iY-Uj4"/>
-                                            <outlet property="locationLabel" destination="RKz-RG-k5E" id="3Zh-Xt-Znl"/>
+                                            <outlet property="characterImageView" destination="DE7-ez-eEi" id="EOb-yR-gc5"/>
+                                            <outlet property="characterTitle" destination="RKz-RG-k5E" id="08s-ut-GNm"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewActivityLoadingCell" id="OYK-rR-77W" customClass="LoadingCollectionViewCell" customModule="OneHero" customModuleProvider="target">

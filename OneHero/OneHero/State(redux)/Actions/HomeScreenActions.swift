@@ -13,7 +13,7 @@ struct HomeScreenActions {
         case resetState
         case resetOperationState
         case updateRetrievalState(state: HomeScreenState.RetrievalState)
-        case setUserProfile(profile: [MarvelCharacter]?)
+        case setMarvelCharacterProfile(profile: [MarvelCharacter]?)
         case getCharacters
         case setSelectedCharacter(profile: MarvelCharacter?)
         case setShouldLoadMore(loadMore: Bool)
@@ -23,14 +23,13 @@ struct HomeScreenActions {
     }
 }
 
-
 struct HomeScreenActionCreators: HasDependencies {
     func getCharacters(state: AppState, store: Store<AppState>) -> Action? {
         let marvelAPIService = dependencies.resolveMarvelAPIService()
         store.dispatch(ResetRoutingAction())
         
         store.dispatch(
-            UserProfileActions.UserProfileAction.updateRetrievalState(state: .fetching)
+            CharacterProfileActions.CharacterProfileAction.updateRetrievalState(state: .fetching)
         )
         
         marvelAPIService.getCharacters(startIndex: state.homeScreenState.pagingIndex.start, maxResults: state.homeScreenState.pagingIndex.end) { result in
@@ -49,7 +48,7 @@ struct HomeScreenActionCreators: HasDependencies {
                     switch value {
                     case let .getCharacters(marvelCharacters):
                         store.dispatch(HomeScreenActions.HomeScreenAction.updateRetrievalState(state: .success))
-                        store.dispatchOnMain(HomeScreenActions.HomeScreenAction.setUserProfile(profile: marvelCharacters))
+                        store.dispatch(HomeScreenActions.HomeScreenAction.setMarvelCharacterProfile(profile: marvelCharacters))
                         
                         if state.homeScreenState.pagingIndex.start > 0 {
                             store.dispatch(HomeScreenActions.HomeScreenAction.setShouldLoadMore(loadMore: true))
@@ -67,8 +66,6 @@ struct HomeScreenActionCreators: HasDependencies {
                 }
             }
         }
-        
         return nil
     }
-    
 }

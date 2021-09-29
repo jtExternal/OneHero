@@ -10,7 +10,6 @@ import UIKit
 import ReSwift
 
 class AboutCharacterViewController: UIViewController {
-
     @IBOutlet weak var headerCharacterImageView: UIImageView!
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var textView: UITextView!
@@ -19,13 +18,6 @@ class AboutCharacterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let cross = #imageLiteral(resourceName: "cross").withRenderingMode(.alwaysTemplate)
-//        closeButton.setImage(cross, for: .normal)
-//        closeButton.tintColor = .white
-//
-//        headerCharacterImageView.image = data.image
-//        titleText.text = data.title
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -33,13 +25,9 @@ class AboutCharacterViewController: UIViewController {
 
         store.subscribe(self) {
             $0.select {
-                $0.userProfileState
+                $0.marvelCharacterProfileState
             }
         }
-
-//        if !isMovingToParent {
-//            store.dispatch(UserProfileActionCreators().fetchUserProfile)
-//        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -62,6 +50,7 @@ extension AboutCharacterViewController: StoreSubscriber {
         
         if let populatedData = marvelCharacterData {
             DispatchQueue.main.async { [weak self] in
+                self?.textView.apply(Stylesheet.Main.TextViews.oneHeroMultiLineTextInput)
                 
                 if let imageUrl = populatedData.thumbnail?.url {
                     
@@ -71,7 +60,12 @@ extension AboutCharacterViewController: StoreSubscriber {
                 }
                
                 self?.titleText.text = populatedData.name
-                self?.textView.text = populatedData.description
+                if populatedData.description == nil || populatedData.description?.isEmpty ?? false {
+                    self?.textView.attributedText = Assets.marvelHistoryBioPlaceholder.getRTF()
+                } else {
+                    self?.textView.text = populatedData.description
+                }
+                
             }
         }
     }

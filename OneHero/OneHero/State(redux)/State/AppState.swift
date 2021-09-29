@@ -12,12 +12,12 @@ struct AppState {
     let routingState: RoutingState
     let homeScreenState: HomeScreenState
     let mainViewState: MainViewState
-    let userProfileState: AboutCharacterProfileState
+    let marvelCharacterProfileState: AboutCharacterProfileState
 
     static func initialAppState() -> AppState {
         return AppState(routingState: RoutingState(),
                         homeScreenState: HomeScreenState.initState(),
                         mainViewState: MainViewState(),
-                        userProfileState: AboutCharacterProfileState.initialUserProfileState())
+                        marvelCharacterProfileState: AboutCharacterProfileState.initialUserProfileState())
     }
 }

@@ -18,13 +18,15 @@ import DataCache
 
 class ImageServiceHelper {
     func fetchImage(url: URL, completion: @escaping ((UIImage?) -> Void)) {
-       
+        
         // Read placeholder image
-        if url.absoluteString.hasSuffix("image_not_available.jpg") {
+        if url.absoluteString.hasSuffix(Configuration.imageNotAvailableSuffix) {
+            Log.d("Detected Marvel API returned back no image. Using placeholder image instead.")
             DispatchQueue.main.async {
                 completion(Assets.placeHolder.getImage())
             }
         } else if let cachedImage = DataCache.instance.readImageForKey(key: url.absoluteString) {
+            Log.d("Loaded image from cache for \(url.absoluteString)")
             DispatchQueue.main.async {
                 completion(cachedImage)
             }
@@ -42,20 +44,21 @@ class ImageServiceHelper {
                 
                 
                 if let image = UIImage(data: data) {
+                    Log.d("Writing new image to cache for key \(url.absoluteString)")
+                    
                     DataCache.instance.write(image: image, forKey: url.absoluteString, format: .jpeg)
                     DispatchQueue.main.async {
                         completion(image)
                     }
                 } else {
+                    Log.w("No image could be rendered.")
+                    
                     DispatchQueue.main.async {
                         completion(UIImage())
                     }
                 }
             }
-            
             task.resume()
         }
-        
     }
-    
 }

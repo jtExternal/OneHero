@@ -29,10 +29,10 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
             else { return nil }
 
         // 11
-        self.cellImageViewRect = selectedCell.locationImageView.convert(selectedCell.locationImageView.bounds, to: window)
+        self.cellImageViewRect = selectedCell.characterImageView.convert(selectedCell.characterImageView.bounds, to: window)
 
         // 46
-        self.cellLabelRect = selectedCell.locationLabel.convert(selectedCell.locationLabel.bounds, to: window)
+        self.cellLabelRect = selectedCell.characterTitle.convert(selectedCell.characterTitle.bounds, to: window)
     }
 
     // 12
@@ -58,9 +58,9 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         guard
             let selectedCell = firstViewController.selectedCell,
             let window = firstViewController.view.window ?? secondViewController.view.window,
-            let cellImageSnapshot = selectedCell.locationImageView.snapshotView(afterScreenUpdates: true),
+            let cellImageSnapshot = selectedCell.characterImageView.snapshotView(afterScreenUpdates: true),
             let controllerImageSnapshot = secondViewController.headerCharacterImageView.snapshotView(afterScreenUpdates: true),
-            let cellLabelSnapshot = selectedCell.locationLabel.snapshotView(afterScreenUpdates: true), // 47
+            let cellLabelSnapshot = selectedCell.characterTitle.snapshotView(afterScreenUpdates: true), // 47
             let closeButtonSnapshot = secondViewController.closeButton.snapshotView(afterScreenUpdates: true) // 53
             else {
                 transitionContext.completeTransition(true)

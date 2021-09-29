@@ -10,7 +10,7 @@ import UIKit
 
 class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     fileprivate var marvelCharacters: [MarvelCharacter]?
-
+    
     init(marvelCharacters: [MarvelCharacter]) {
         self.marvelCharacters = marvelCharacters
     }
@@ -27,7 +27,6 @@ class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColl
         return marvelCharacters?.count ?? 0
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseId, for: indexPath) as? CharacterCollectionViewCell else {
             return UICollectionViewCell()
@@ -41,10 +40,10 @@ class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColl
         
         if let imageUrl = data.thumbnail?.url {
             ImageServiceHelper().fetchImage(url: imageUrl) { image in
-                cell.locationImageView.image = image
+                cell.characterImageView.image = image
             }
         }
-
+        
         cell.configure(title: data.name ?? "", characterImage: Assets.detail.getImage() ?? UIImage())
         cell.characterData = data
         
