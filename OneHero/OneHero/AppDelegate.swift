@@ -12,9 +12,6 @@ let store = Store<AppState>(reducer: appReducer, state: nil)
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-//    private var appRouter: AppRouter?
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let diskCacheSize = 100*1024*1024
         URLCache.configSharedCache(disk: diskCacheSize)

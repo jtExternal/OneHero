@@ -7,7 +7,7 @@
 import UIKit
 import ReSwift
 
-class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     private let refreshControl = UIRefreshControl()
     private var loadingInit = false
@@ -102,18 +102,23 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
 }
 
 extension MainViewController: UIViewControllerTransitioningDelegate {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.bounds.width - 10) / 2
-        return .init(width: width, height: width)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseId, for: indexPath) as? CharacterCollectionViewCell else {
             return
         }
-        
-        store.dispatch(HomeScreenActions.HomeScreenAction.setSelectedCharacter(profile: cell.characterData))
+       
+        guard let data =  dataSource?.getMarvelCharacters()?[indexPath.row] else {
+            return
+        }
+
+        store.dispatch(HomeScreenActions.HomeScreenAction.setSelectedCharacter(profile: data))
+        store.dispatch(UserProfileActions.UserProfileAction.setUserProfile(profile: data))
         store.dispatch(HomeScreenActions.HomeScreenAction.presentPopover(presentPopover: .present))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.bounds.width - 10) / 2
+        return .init(width: width, height: width)
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

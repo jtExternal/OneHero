@@ -27,6 +27,7 @@ class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColl
         return marvelCharacters?.count ?? 0
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseId, for: indexPath) as? CharacterCollectionViewCell else {
             return UICollectionViewCell()
@@ -38,8 +39,6 @@ class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColl
             return cell
         }
         
-        // TODO replace with real image
-        
         if let imageUrl = data.thumbnail?.url {
             ImageServiceHelper().fetchImage(url: imageUrl) { image in
                 cell.locationImageView.image = image
@@ -50,24 +49,5 @@ class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColl
         cell.characterData = data
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //                store.dispatch(HomeScreenActions.HomeScreenAction.setSelectedCharacter(profile: data))
-        //                store.dispatch(RoutingAction(destination: .aboutCharacter, transitionType: .push, animationType: .standard))
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCellIdentifier", for: indexPath) as? CharacterCollectionViewCell else {
-            return
-        }
-        
-        store.dispatch(HomeScreenActions.HomeScreenAction.setSelectedCharacter(profile: cell.characterData))
-        store.dispatch(RoutingAction(destination: .aboutCharacter, transitionType: .present, animationType: .standard))
-        
-        //        // 6
-        //        selectedCell = collectionView.cellForItem(at: indexPath) as? CollectionViewCell
-        //        // 7
-        //        selectedCellImageViewSnapshot = selectedCell?.locationImageView.snapshotView(afterScreenUpdates: false)
-        //
-        //        presentSecondViewController(with: DataManager.data[indexPath.row])
     }
 }

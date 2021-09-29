@@ -70,6 +70,12 @@
 		EABE645E2704A88D004F1F26 /* StoryboardNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE645D2704A88D004F1F26 /* StoryboardNames.swift */; };
 		EABE64612704A932004F1F26 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64602704A932004F1F26 /* CharacterCollectionViewCell.swift */; };
 		EABE64632704A958004F1F26 /* MainCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64622704A957004F1F26 /* MainCollectionViewDataSource.swift */; };
+		EABE64672704C862004F1F26 /* generate_secrets.rb in Resources */ = {isa = PBXBuildFile; fileRef = EABE64662704C862004F1F26 /* generate_secrets.rb */; };
+		EABE64742704CE0F004F1F26 /* set_env_vars_dev.example.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABE64712704CE0F004F1F26 /* set_env_vars_dev.example.sh */; };
+		EABE64752704CE0F004F1F26 /* set_env_vars_production.example.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABE64722704CE0F004F1F26 /* set_env_vars_production.example.sh */; };
+		EABE64762704CE0F004F1F26 /* set_env_vars_staging.example.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABE64732704CE0F004F1F26 /* set_env_vars_staging.example.sh */; };
+		EABE64782704CE17004F1F26 /* set_env_vars.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABE64772704CE17004F1F26 /* set_env_vars.sh */; };
+		EABE647A2704CE22004F1F26 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64792704CE22004F1F26 /* AppSecrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +146,12 @@
 		EABE645D2704A88D004F1F26 /* StoryboardNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardNames.swift; sourceTree = "<group>"; };
 		EABE64602704A932004F1F26 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		EABE64622704A957004F1F26 /* MainCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		EABE64662704C862004F1F26 /* generate_secrets.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = generate_secrets.rb; sourceTree = "<group>"; };
+		EABE64712704CE0F004F1F26 /* set_env_vars_dev.example.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set_env_vars_dev.example.sh; sourceTree = "<group>"; };
+		EABE64722704CE0F004F1F26 /* set_env_vars_production.example.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set_env_vars_production.example.sh; sourceTree = "<group>"; };
+		EABE64732704CE0F004F1F26 /* set_env_vars_staging.example.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set_env_vars_staging.example.sh; sourceTree = "<group>"; };
+		EABE64772704CE17004F1F26 /* set_env_vars.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set_env_vars.sh; sourceTree = "<group>"; };
+		EABE64792704CE22004F1F26 /* AppSecrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppSecrets.swift; path = Secrets/AppSecrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +204,7 @@
 		EABE63C527049BB2004F1F26 /* OneHero */ = {
 			isa = PBXGroup;
 			children = (
+				EABE64682704C87C004F1F26 /* Configurations */,
 				EABE64502704A6F3004F1F26 /* Services */,
 				EABE64272704A5F3004F1F26 /* ViewRouting */,
 				EABE63F027049DB6004F1F26 /* Extensions */,
@@ -206,6 +219,7 @@
 				EABE63CF27049BB3004F1F26 /* Assets.xcassets */,
 				EABE63D127049BB3004F1F26 /* LaunchScreen.storyboard */,
 				EABE63D427049BB3004F1F26 /* Info.plist */,
+				EABE64652704C80D004F1F26 /* scripts */,
 			);
 			path = OneHero;
 			sourceTree = "<group>";
@@ -256,7 +270,6 @@
 		EABE63DF27049C8B004F1F26 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				EABE64592704A859004F1F26 /* AppConfiguration.swift */,
 				EABE64582704A859004F1F26 /* Assets.swift */,
 				EABE64572704A859004F1F26 /* Logger.swift */,
 				EABE63E127049CA0004F1F26 /* UIAnimators */,
@@ -435,6 +448,51 @@
 			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
+		EABE64652704C80D004F1F26 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				EABE64662704C862004F1F26 /* generate_secrets.rb */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+		EABE64682704C87C004F1F26 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				EABE64592704A859004F1F26 /* AppConfiguration.swift */,
+				EABE64792704CE22004F1F26 /* AppSecrets.swift */,
+				EABE646E2704CD7F004F1F26 /* Secrets */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		EABE646E2704CD7F004F1F26 /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				EABE64702704CDE4004F1F26 /* Example */,
+				EABE646F2704CDDE004F1F26 /* Actual */,
+			);
+			path = Secrets;
+			sourceTree = "<group>";
+		};
+		EABE646F2704CDDE004F1F26 /* Actual */ = {
+			isa = PBXGroup;
+			children = (
+				EABE64772704CE17004F1F26 /* set_env_vars.sh */,
+			);
+			path = Actual;
+			sourceTree = "<group>";
+		};
+		EABE64702704CDE4004F1F26 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				EABE64712704CE0F004F1F26 /* set_env_vars_dev.example.sh */,
+				EABE64722704CE0F004F1F26 /* set_env_vars_production.example.sh */,
+				EABE64732704CE0F004F1F26 /* set_env_vars_staging.example.sh */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -443,6 +501,7 @@
 			buildConfigurationList = EABE63D727049BB3004F1F26 /* Build configuration list for PBXNativeTarget "OneHero" */;
 			buildPhases = (
 				5D5AF934E4D1BEC079C69D2D /* [CP] Check Pods Manifest.lock */,
+				EABE64642704C7BD004F1F26 /* Generate App Secrets */,
 				EABE63BF27049BB2004F1F26 /* Sources */,
 				EABE63C027049BB2004F1F26 /* Frameworks */,
 				EABE63C127049BB2004F1F26 /* Resources */,
@@ -497,9 +556,14 @@
 			files = (
 				EABE63D327049BB3004F1F26 /* LaunchScreen.storyboard in Resources */,
 				EABE64252704A405004F1F26 /* About.storyboard in Resources */,
+				EABE64762704CE0F004F1F26 /* set_env_vars_staging.example.sh in Resources */,
+				EABE64752704CE0F004F1F26 /* set_env_vars_production.example.sh in Resources */,
 				EABE63D027049BB3004F1F26 /* Assets.xcassets in Resources */,
 				EABE64022704A38A004F1F26 /* work-sans in Resources */,
+				EABE64672704C862004F1F26 /* generate_secrets.rb in Resources */,
 				EABE63CE27049BB2004F1F26 /* Main.storyboard in Resources */,
+				EABE64742704CE0F004F1F26 /* set_env_vars_dev.example.sh in Resources */,
+				EABE64782704CE17004F1F26 /* set_env_vars.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +609,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OneHero/Pods-OneHero-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EABE64642704C7BD004F1F26 /* Generate App Secrets */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate App Secrets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\ncd \"${PROJECT_DIR}/${PROJECT_NAME}/Configurations/Secrets/Actual\"\necho \"${PROJECT_DIR}/${PROJECT_NAME}/Configurations/Secrets/Actual\"\n\n    if [ -f ./set_env_vars.sh ]\n    then\n    source ./set_env_vars.sh\n    fi\n\n\necho \"Generating secrets from env variables...\"\n\ncd \"${PROJECT_DIR}/${PROJECT_NAME}/scripts\"\nruby generate_secrets.rb\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -567,6 +649,7 @@
 				EABE64262704A405004F1F26 /* AboutCharacterViewController.swift in Sources */,
 				EABE64462704A6C3004F1F26 /* HomeScreenState.swift in Sources */,
 				EABE641D2704A3B5004F1F26 /* BaseMarvelResponse.swift in Sources */,
+				EABE647A2704CE22004F1F26 /* AppSecrets.swift in Sources */,
 				EABE64122704A3AD004F1F26 /* EndPointType.swift in Sources */,
 				EABE643F2704A6B3004F1F26 /* RoutingReducer.swift in Sources */,
 				EABE64552704A705004F1F26 /* MarvelAPIService.swift in Sources */,

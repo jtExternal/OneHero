@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,25 +23,24 @@
                                     <constraint firstAttribute="height" constant="300" id="KTG-wT-9pT"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7b-uS-a7u">
-                                <rect key="frame" x="168.5" y="128.5" width="77" height="43"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Arc-zl-qmM">
                                 <rect key="frame" x="8" y="52" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="6sc-Wp-ADd"/>
                                     <constraint firstAttribute="width" constant="44" id="Zb9-qy-urQ"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="xmark.circle" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                                </state>
                                 <connections>
                                     <action selector="close:" destination="ZVn-yD-t8F" eventType="touchUpInside" id="H3M-qj-E4i"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g30-2M-5ZD">
-                                <rect key="frame" x="0.0" y="384" width="414" height="478"/>
+                                <rect key="frame" x="0.0" y="310" width="414" height="552"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -53,21 +53,41 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQx-RN-SVs">
+                                <rect key="frame" x="0.0" y="251" width="414" height="59"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="I7b-uS-a7u">
+                                        <rect key="frame" x="8" y="8" width="398" height="43"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstItem="I7b-uS-a7u" firstAttribute="leading" secondItem="CQx-RN-SVs" secondAttribute="leading" constant="8" id="27q-fD-n7m"/>
+                                    <constraint firstItem="I7b-uS-a7u" firstAttribute="top" secondItem="CQx-RN-SVs" secondAttribute="top" constant="8" id="hhZ-CY-7Jp"/>
+                                    <constraint firstAttribute="bottom" secondItem="I7b-uS-a7u" secondAttribute="bottom" constant="8" id="v0s-LT-QgZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="I7b-uS-a7u" secondAttribute="trailing" constant="8" id="vXZ-42-nrt"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="S4M-Sm-Aum"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="xMY-R7-OGU" firstAttribute="leading" secondItem="S4M-Sm-Aum" secondAttribute="leading" id="0G3-y4-Zmc"/>
-                            <constraint firstItem="I7b-uS-a7u" firstAttribute="centerY" secondItem="xMY-R7-OGU" secondAttribute="centerY" id="3f7-HV-Q8M"/>
                             <constraint firstItem="xMY-R7-OGU" firstAttribute="top" secondItem="TSB-JV-emN" secondAttribute="top" id="Ff6-mj-UeS"/>
-                            <constraint firstItem="I7b-uS-a7u" firstAttribute="centerX" secondItem="xMY-R7-OGU" secondAttribute="centerX" id="G4V-xU-FXm"/>
                             <constraint firstItem="g30-2M-5ZD" firstAttribute="leading" secondItem="TSB-JV-emN" secondAttribute="leading" id="HqJ-QI-Ges"/>
-                            <constraint firstItem="g30-2M-5ZD" firstAttribute="top" secondItem="xMY-R7-OGU" secondAttribute="bottom" constant="84" id="KAG-Xr-jsQ"/>
+                            <constraint firstItem="g30-2M-5ZD" firstAttribute="top" secondItem="xMY-R7-OGU" secondAttribute="bottom" constant="10" id="KAG-Xr-jsQ"/>
                             <constraint firstItem="S4M-Sm-Aum" firstAttribute="trailing" secondItem="xMY-R7-OGU" secondAttribute="trailing" id="Mkq-Tl-9ll"/>
+                            <constraint firstItem="CQx-RN-SVs" firstAttribute="leading" secondItem="S4M-Sm-Aum" secondAttribute="leading" id="X4x-XE-PAL"/>
                             <constraint firstItem="Arc-zl-qmM" firstAttribute="leading" secondItem="S4M-Sm-Aum" secondAttribute="leading" constant="8" id="fDq-Vq-boJ"/>
                             <constraint firstItem="S4M-Sm-Aum" firstAttribute="bottom" secondItem="g30-2M-5ZD" secondAttribute="bottom" id="jk1-vR-2Xv"/>
+                            <constraint firstItem="Arc-zl-qmM" firstAttribute="top" secondItem="S4M-Sm-Aum" secondAttribute="top" constant="8" id="kcp-1I-NUC"/>
                             <constraint firstItem="S4M-Sm-Aum" firstAttribute="trailing" secondItem="g30-2M-5ZD" secondAttribute="trailing" id="rNd-Wp-TEO"/>
                             <constraint firstItem="Arc-zl-qmM" firstAttribute="top" secondItem="S4M-Sm-Aum" secondAttribute="top" constant="8" id="vOQ-on-Dli"/>
+                            <constraint firstItem="g30-2M-5ZD" firstAttribute="top" secondItem="CQx-RN-SVs" secondAttribute="bottom" id="x8x-k5-lDo"/>
+                            <constraint firstItem="CQx-RN-SVs" firstAttribute="trailing" secondItem="S4M-Sm-Aum" secondAttribute="trailing" id="xcy-x0-fm8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -83,11 +103,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

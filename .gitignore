@@ -25,6 +25,11 @@ DerivedData/
 ## Obj-C/Swift specific
 *.hmap
 
+## Ignore app secrets
+OneHero/Configurations/Secrets/Actual/*.sh
+OneHero/Configurations/Secrets/AppSecrets.swift
+
+
 ## App packaging
 *.ipa
 *.dSYM.zip
