@@ -7,14 +7,17 @@
 import UIKit
 import ReSwift
 
-class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
-    @IBOutlet weak var collectionView: UICollectionView!
+class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
+    @IBOutlet weak var collectionView: PagedCollectionView!
     private let refreshControl = UIRefreshControl()
     private var loadingInit = false
     var selectedCell: CharacterCollectionViewCell?
     private var selectedCellImageViewSnapshot: UIView?
     private var animator: Animator?
     private var dataSource: MainCollectionViewDataSource?
+    var page: Int = 0
+    var isLoading:Bool = false
+    private var totalCollectionItems = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +25,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         hideKeyboard()
         
         dataSource = MainCollectionViewDataSource(marvelCharacters: [MarvelCharacter]())
-        
+        collectionView.updateDelegate = self
         collectionView.delegate = self
         collectionView.dataSource = dataSource
         
@@ -54,6 +57,19 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         store.unsubscribe(self)
     }
     
+    func hideLoading() {
+        DispatchQueue.main.async {
+            OneHeroProgressView.shared.hideProgressView()
+        }
+    }
+
+    func showLoading() {
+        DispatchQueue.main.async {
+            OneHeroProgressView.shared.showProgressView()
+        }
+    }
+
+    
     private func setupRefreshControl() {
         refreshControl.addTarget(self, action: #selector(refreshList(_:)), for: .valueChanged)
     }
@@ -73,9 +89,10 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             store.dispatch(HomeScreenActions.HomeScreenAction.reset)
         }
         
+        self.isLoading = true
+        
         store.dispatch(HomeScreenActions.HomeScreenAction.setStartEndPagingIndex(pagingIndex: PagingIndex(start: page)))
         store.dispatch(HomeScreenActionCreators().getCharacters)
-        
     }
     
     func setDataSource(marvelCharacters: [MarvelCharacter]) {
@@ -101,12 +118,8 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
 }
 
-extension MainViewController: UIViewControllerTransitioningDelegate {
+extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseId, for: indexPath) as? CharacterCollectionViewCell else {
-            return
-        }
-       
         guard let data =  dataSource?.getMarvelCharacters()?[indexPath.row] else {
             return
         }
@@ -116,6 +129,9 @@ extension MainViewController: UIViewControllerTransitioningDelegate {
         store.dispatch(HomeScreenActions.HomeScreenAction.presentPopover(presentPopover: .present))
     }
     
+}
+
+extension MainViewController: UIViewControllerTransitioningDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width - 10) / 2
         return .init(width: width, height: width)
@@ -150,7 +166,9 @@ extension MainViewController: StoreSubscriber {
         
         switch state.retrievalState {
         case .failure:
+            hideLoading()
             hideRefreshControl()
+            isLoading = false
         case .fetched:
             if state.shouldLoadMore {
                 if dataSource == nil {
@@ -161,7 +179,8 @@ extension MainViewController: StoreSubscriber {
             } else {
                 setDataSource(marvelCharacters: state.characters)
             }
-            
+            hideLoading()
+            isLoading = false
             DispatchQueue.main.async {
                 [weak self] in
                 self?.hideRefreshControl()
@@ -169,15 +188,53 @@ extension MainViewController: StoreSubscriber {
             }
             
         case .fetching:
+            showLoading()
             break
         case .none:
             hideRefreshControl()
+            hideLoading()
         case .queryPassed:
             break
         case .success:
+            hideLoading()
             break
         case .notFetched:
+            hideLoading()
             break
         }
     }
 }
+
+extension MainViewController: PagedCollectionViewDelegate {
+  func collectionView(
+    _ collectionView: PagedCollectionView,
+    needsDataForPage page: Int,
+    completion: (Int, NSError?) -> Void
+  ) {
+      let dat = dataSource?.getMarvelCharacters()?.count ?? 0
+      
+    // Typically request your data over network, update your data source and refresh UI
+//    totalCollectionItems += collectionView.elementsPerPage
+      if !isLoading {
+          fetchNotifications(page: dat + collectionView.elementsPerPage)
+        completion(collectionView.elementsPerPage, nil)
+      }
+
+//    collectionView.reloadData()
+  }
+}
+
+
+// Note: If you override the delegate for your PagedTableView or PagedCollectionView like:
+// tableView.delegate = <UITableViewDelegate conformant object>
+// you need to forward the scrolling events to automatically load new pages if needed.
+// See the code below on how to do this.
+
+  extension MainViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        collectionView.scrollViewDidScroll(collectionView)
+
+    }
+  }
+ 

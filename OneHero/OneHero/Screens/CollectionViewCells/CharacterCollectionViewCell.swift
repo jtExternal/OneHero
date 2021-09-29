@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 final class CharacterCollectionViewCell: UICollectionViewCell {
-    static let reuseId = "CollectionViewCellIdentifier"
+    static let reuseId = "collectionViewCharacterCell"
     @IBOutlet private(set) var locationImageView: UIImageView!
     @IBOutlet private(set) var locationLabel: UILabel!
     var characterData:MarvelCharacter?

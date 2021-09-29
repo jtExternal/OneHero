@@ -44,11 +44,11 @@ struct UserProfileActionCreators: HasDependencies {
             case let .success(value):
                 switch value {
                 case let .getCharacter(marvelCharacter):
-                    store.dispatchOnMain(UserProfileActions.UserProfileAction.updateRetrievalState(state: .success))
-                    store.dispatchOnMain(UserProfileActions.UserProfileAction.setUserProfile(profile: marvelCharacter))
+                    store.dispatch(UserProfileActions.UserProfileAction.updateRetrievalState(state: .success))
+                    store.dispatch(UserProfileActions.UserProfileAction.setUserProfile(profile: marvelCharacter))
                     store.dispatch(UserProfileActions.UserProfileAction.updateRetrievalState(state: .fetched))
                 case .noResults:
-                    store.dispatchOnMain(UserProfileActions.UserProfileAction.updateRetrievalState(state: .failure))
+                    store.dispatch(UserProfileActions.UserProfileAction.updateRetrievalState(state: .failure))
                     store.dispatch(UserProfileActions.UserProfileAction.updateRetrievalState(state: .noStoresFound))
                 default:
                     break

@@ -76,6 +76,9 @@
 		EABE64762704CE0F004F1F26 /* set_env_vars_staging.example.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABE64732704CE0F004F1F26 /* set_env_vars_staging.example.sh */; };
 		EABE64782704CE17004F1F26 /* set_env_vars.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABE64772704CE17004F1F26 /* set_env_vars.sh */; };
 		EABE647A2704CE22004F1F26 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64792704CE22004F1F26 /* AppSecrets.swift */; };
+		EABE647E2704ED32004F1F26 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE647D2704ED32004F1F26 /* LoadingCollectionViewCell.swift */; };
+		EABE64802704F213004F1F26 /* PagedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE647F2704F213004F1F26 /* PagedCollectionView.swift */; };
+		EABE648227050794004F1F26 /* OneHeroProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE648127050794004F1F26 /* OneHeroProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +155,9 @@
 		EABE64732704CE0F004F1F26 /* set_env_vars_staging.example.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set_env_vars_staging.example.sh; sourceTree = "<group>"; };
 		EABE64772704CE17004F1F26 /* set_env_vars.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set_env_vars.sh; sourceTree = "<group>"; };
 		EABE64792704CE22004F1F26 /* AppSecrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppSecrets.swift; path = Secrets/AppSecrets.swift; sourceTree = "<group>"; };
+		EABE647D2704ED32004F1F26 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
+		EABE647F2704F213004F1F26 /* PagedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedCollectionView.swift; sourceTree = "<group>"; };
+		EABE648127050794004F1F26 /* OneHeroProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneHeroProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +280,7 @@
 				EABE64572704A859004F1F26 /* Logger.swift */,
 				EABE63E127049CA0004F1F26 /* UIAnimators */,
 				EABE63E027049C99004F1F26 /* Theme */,
+				EABE647F2704F213004F1F26 /* PagedCollectionView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -331,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				EABE64212704A3EB004F1F26 /* OneHeroCustomView.swift */,
+				EABE648127050794004F1F26 /* OneHeroProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -444,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				EABE64602704A932004F1F26 /* CharacterCollectionViewCell.swift */,
+				EABE647D2704ED32004F1F26 /* LoadingCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -666,9 +675,12 @@
 				EABE64072704A39D004F1F26 /* URLParameterEncoding.swift in Sources */,
 				EABE63FC2704A383004F1F26 /* UIViewcontroller+Router.swift in Sources */,
 				EABE64132704A3AD004F1F26 /* HTTPTask.swift in Sources */,
+				EABE64802704F213004F1F26 /* PagedCollectionView.swift in Sources */,
+				EABE647E2704ED32004F1F26 /* LoadingCollectionViewCell.swift in Sources */,
 				EABE63FB2704A383004F1F26 /* URLCache+Extension.swift in Sources */,
 				EABE63FD2704A383004F1F26 /* Date+String.swift in Sources */,
 				EABE64222704A3EB004F1F26 /* OneHeroCustomView.swift in Sources */,
+				EABE648227050794004F1F26 /* OneHeroProgressView.swift in Sources */,
 				EABE640A2704A3A5004F1F26 /* MarvelApiRequest.swift in Sources */,
 				EABE642E2704A602004F1F26 /* SceneTransitionType.swift in Sources */,
 				EABE63F92704A383004F1F26 /* UIView+Extension.swift in Sources */,

@@ -48,7 +48,7 @@ struct HomeScreenActionCreators: HasDependencies {
                 case let .success(value):
                     switch value {
                     case let .getCharacters(marvelCharacters):
-                        store.dispatchOnMain(HomeScreenActions.HomeScreenAction.updateRetrievalState(state: .success))
+                        store.dispatch(HomeScreenActions.HomeScreenAction.updateRetrievalState(state: .success))
                         store.dispatchOnMain(HomeScreenActions.HomeScreenAction.setUserProfile(profile: marvelCharacters))
                         
                         if state.homeScreenState.pagingIndex.start > 0 {
@@ -57,9 +57,9 @@ struct HomeScreenActionCreators: HasDependencies {
                             store.dispatch(HomeScreenActions.HomeScreenAction.setShouldLoadMore(loadMore: false))
                         }
                         
-                        store.dispatchOnMain(HomeScreenActions.HomeScreenAction.updateRetrievalState(state: .fetched))
+                        store.dispatch(HomeScreenActions.HomeScreenAction.updateRetrievalState(state: .fetched))
                     case .noResults:
-                        store.dispatchOnMain(HomeScreenActions.HomeScreenAction.updateRetrievalState(state: .failure))
+                        store.dispatch(HomeScreenActions.HomeScreenAction.updateRetrievalState(state: .failure))
                     default:
                         break
                     }

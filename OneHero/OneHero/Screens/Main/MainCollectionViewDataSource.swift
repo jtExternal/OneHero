@@ -10,7 +10,7 @@ import UIKit
 
 class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     fileprivate var marvelCharacters: [MarvelCharacter]?
-    
+
     init(marvelCharacters: [MarvelCharacter]) {
         self.marvelCharacters = marvelCharacters
     }
@@ -51,3 +51,5 @@ class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColl
         return cell
     }
 }
+
+
