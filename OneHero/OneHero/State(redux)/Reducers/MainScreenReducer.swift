@@ -8,8 +8,8 @@
 import Foundation
 import ReSwift
 
-struct HomeScreenReducer {
-    static func homeScreenReducer(action: Action, state: HomeScreenState?) -> HomeScreenState {
+struct MainScreenReducer {
+    static func mainScreenReducer(action: Action, state: HomeScreenState?) -> HomeScreenState {
         var state = state ?? HomeScreenState.initState()
         switch action {
         case let act as HomeScreenActions.HomeScreenAction:
@@ -26,10 +26,13 @@ struct HomeScreenReducer {
                 state.selectedCharacter = marvelCharacter
             case let .presentPopover(presentPop):
                 state.presentPopover = presentPop
+            case let .setSearchQuery(currentSearchQuery):
+                state.currentSearchQuery = currentSearchQuery
             case .resetState, .reset:
                 state = HomeScreenState.initState()
                 state.retrievalState = .failure
                 state.shouldLoadMore = false
+                state.currentSearchQuery = ""
                 state.selectedCharacter = nil
                 state.pagingIndex = PagingIndex(start: 0, end: Configuration.defaultPagingAmt)
             default: break
