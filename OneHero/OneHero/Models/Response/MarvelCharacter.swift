@@ -27,4 +27,15 @@ public struct MarvelCharacter: Decodable, Equatable {
         self.thumbnail = thumbnail
         self.urls = urls
     }
+    
+    func getUrlType(destType: MarvelURLDestTypes) -> String? {
+        if let urls = urls {
+            for marvelUrl in urls {
+                if marvelUrl.type == destType.rawValue {
+                    return marvelUrl.url
+                }
+            }
+        }
+        return nil
+    }
 }

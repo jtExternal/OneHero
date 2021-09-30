@@ -35,7 +35,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         
         collectionView.setCollectionViewLayout(layout, animated: false)
         setupRefreshControl()
-        fetchNotifications(page: 0, shouldResetList: true)
+        fetchHeroes(page: 0, shouldResetList: true)
         loadingInit = false
     }
     
@@ -75,7 +75,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     }
     
     @objc private func refreshList(_: Any) {
-        fetchNotifications(page: 0, shouldResetList: true)
+        fetchHeroes(page: 0, shouldResetList: true)
     }
     
     func hideRefreshControl() {
@@ -84,16 +84,18 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         }
     }
     
-    private func fetchNotifications(page: Int, shouldResetList: Bool = false) {
+    private func fetchHeroes(page: Int, shouldResetList: Bool = false) {
         if shouldResetList {
             store.dispatch(HomeScreenActions.HomeScreenAction.reset)
         }
         
         self.isLoading = true
-        
-        // Update the state with new paging index
         store.dispatch(HomeScreenActions.HomeScreenAction.setStartEndPagingIndex(pagingIndex: PagingIndex(start: page)))
         store.dispatch(HomeScreenActionCreators().getCharacters)
+        
+        
+        // Update the state with new paging index
+        
     }
     
     // We received a new batch of characters and now we need to refresh collection
@@ -178,8 +180,10 @@ extension MainViewController: StoreSubscriber {
             } else {
                 setDataSource(marvelCharacters: state.characters)
             }
+            
             hideLoading()
             isLoading = false
+            
             DispatchQueue.main.async {
                 [weak self] in
                 self?.hideRefreshControl()
@@ -226,7 +230,7 @@ extension MainViewController: PagedCollectionViewDelegate {
         // Typically request your data over network, update your data source and refresh UI
         //    totalCollectionItems += collectionView.elementsPerPage
         if !isLoading {
-            fetchNotifications(page: marvelCharactersCount + collectionView.elementsPerPage)
+            fetchHeroes(page: marvelCharactersCount + collectionView.elementsPerPage)
             completion(collectionView.elementsPerPage, nil)
         }
         

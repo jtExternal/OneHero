@@ -24,8 +24,6 @@ struct AboutCharacterProfileState: Equatable {
         case notFetched
         case fetching
         case fetched
-        case fetchedStores
-        case noStoresFound
         case queryPassed
         case success
         case failure

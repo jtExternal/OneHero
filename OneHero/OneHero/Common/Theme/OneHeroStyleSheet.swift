@@ -284,21 +284,6 @@ enum Stylesheet {
             $0.borderWidth = 0
         }
 
-        /// Slighly rounded corners, grey drop shadow UICollectionViewCell styling
-        static let oneHeroRoundedCell = Style<UICollectionViewCell> {
-            $0.contentView.layer.cornerRadius = 6
-            $0.contentView.layer.masksToBounds = true
-            $0.contentView.layer.borderColor = UIColor.clear.cgColor
-            $0.contentView.layer.borderWidth = 0
-            $0.backgroundColor = UIColor.clear
-            $0.contentView.backgroundColor = UIColor.white
-            $0.layer.shadowColor = UIColor.Palette.charcoal.cgColor
-            $0.layer.shadowOffset = CGSize(width: 1.0, height: 1.5)
-            $0.layer.shadowRadius = 12.0
-            $0.layer.shadowOpacity = 0.12
-            $0.layer.masksToBounds = false
-        }
-
         static let oneHeroMenuTableViewCell = Style<UITableViewCell> {
             $0.textLabel?.font = Assets.Font.workSansRegFont.getFont().withSize(15.0)
             $0.textLabel?.textColor = UIColor.Palette.charcoal
@@ -326,16 +311,6 @@ enum Stylesheet {
                                       NSAttributedString.Key.foregroundColor: UIColor.Palette.charcoal]
         }
 
-        /// Back image `<` for navigation back bar item
-        static let navBarItemAppearance: () -> UIBarButtonItem = {
-            let backItem = UIBarButtonItem()
-            backItem.title = ""
-            backItem.tintColor = .clear
-//            backItem.image = Assets.back.getImage()
-
-            return backItem
-        }
-
         /// Disabled navigation bar right item green text
         static let navbarItemRightGreenAlphaDisabled: (UIBarButtonItem?) -> UIBarButtonItem? = {
             $0?.tintColor = UIColor.Palette.caribbeanGreen.withAlphaComponent(0.7)
@@ -348,26 +323,17 @@ enum Stylesheet {
             $0?.isEnabled = true
             return $0
         }
+        
+        /// Back image `<` for navigation back bar item
+        static let navBarItemAppearance: () -> UIBarButtonItem = {
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            backItem.tintColor = .clear
+//            backItem.image = Assets.back.getImage()
 
-
-        /// Store location search bar custom styling for UISearchBar
-        static let storeLocatorSearchBar = Style<UISearchBar> { searchBar in
-            searchBar.backgroundColor = UIColor.white
-            searchBar.placeholder = "Enter your search"
-
-            // Update the textfield of searchbar to be custom
-            for s in searchBar.subviews[0].subviews where s is UITextField {
-                s.layer.borderWidth = 1.0
-                s.layer.cornerRadius = 8.0
-                s.layer.backgroundColor = UIColor.white.cgColor
-                (s as? UITextField)?.font = Assets.Font.workSansRegFont.getFont().withSize(15.0)
-                (s as? UITextField)?.textColor = UIColor.Palette.manatee
-                s.layer.borderColor = UIColor.Palette.lavenderGray.cgColor
-            }
-            let attributes = [NSAttributedString.Key.foregroundColor: UIColor.Palette.manatee]
-            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
+            return backItem
         }
-
+        
         static let image = Style<UIImageView> {
             $0.contentMode = .center
             $0.backgroundColor = .darkGray

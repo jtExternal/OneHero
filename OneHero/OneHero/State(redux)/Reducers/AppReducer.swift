@@ -15,7 +15,7 @@ func appReducer(action: Action, state: AppState?) -> AppState {
     default:
         state = AppState(
             routingState: RoutingReducer.routingReducer(action: action, state: state.routingState),
-            homeScreenState: HomeScreenReducer.homeScreenReducer(action: action, state: state.homeScreenState),
+            homeScreenState: MainScreenReducer.mainScreenReducer(action: action, state: state.homeScreenState),
             mainViewState: mainReducer(action: action, state: state.mainViewState),
             marvelCharacterProfileState: AboutCharacterProfileReducer.aboutCharacterProfileReducer(action: action, state: state.marvelCharacterProfileState)
         )

@@ -47,7 +47,7 @@
 		EABE64332704A63A004F1F26 /* OneHeroTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64312704A63A004F1F26 /* OneHeroTransition.swift */; };
 		EABE64362704A641004F1F26 /* OneHeroStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64342704A641004F1F26 /* OneHeroStyle.swift */; };
 		EABE64372704A641004F1F26 /* OneHeroStyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64352704A641004F1F26 /* OneHeroStyleSheet.swift */; };
-		EABE643C2704A6B3004F1F26 /* HomeScreenReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64382704A6B3004F1F26 /* HomeScreenReducer.swift */; };
+		EABE643C2704A6B3004F1F26 /* MainScreenReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64382704A6B3004F1F26 /* MainScreenReducer.swift */; };
 		EABE643D2704A6B3004F1F26 /* AboutCharacterProfileReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64392704A6B3004F1F26 /* AboutCharacterProfileReducer.swift */; };
 		EABE643E2704A6B3004F1F26 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE643A2704A6B3004F1F26 /* AppReducer.swift */; };
 		EABE643F2704A6B3004F1F26 /* RoutingReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE643B2704A6B3004F1F26 /* RoutingReducer.swift */; };
@@ -74,7 +74,6 @@
 		EABE64762704CE0F004F1F26 /* set_env_vars_qa.example.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABE64732704CE0F004F1F26 /* set_env_vars_qa.example.sh */; };
 		EABE64782704CE17004F1F26 /* set_env_vars.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABE64772704CE17004F1F26 /* set_env_vars.sh */; };
 		EABE647A2704CE22004F1F26 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64792704CE22004F1F26 /* AppSecrets.swift */; };
-		EABE647E2704ED32004F1F26 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE647D2704ED32004F1F26 /* LoadingCollectionViewCell.swift */; };
 		EABE64802704F213004F1F26 /* PagedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE647F2704F213004F1F26 /* PagedCollectionView.swift */; };
 		EABE648227050794004F1F26 /* OneHeroProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE648127050794004F1F26 /* OneHeroProgressView.swift */; };
 		EABE648527052424004F1F26 /* MarvelHistoryBio.rtf in Resources */ = {isa = PBXBuildFile; fileRef = EABE648427052424004F1F26 /* MarvelHistoryBio.rtf */; };
@@ -88,6 +87,8 @@
 		EABE649927052B85004F1F26 /* WorkSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EABE648727052950004F1F26 /* WorkSans-Regular.otf */; };
 		EABE649A27052B85004F1F26 /* WorkSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EABE648B27052950004F1F26 /* WorkSans-SemiBold.otf */; };
 		EABE649B27052B85004F1F26 /* WorkSans-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = EABE649027052950004F1F26 /* WorkSans-Thin.otf */; };
+		EABE649D270542B8004F1F26 /* MainScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EABE649C270542B8004F1F26 /* MainScreenHeaderView.xib */; };
+		EABE649F27054775004F1F26 /* MainScreenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE649E27054775004F1F26 /* MainScreenHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,7 +136,7 @@
 		EABE64312704A63A004F1F26 /* OneHeroTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneHeroTransition.swift; sourceTree = "<group>"; };
 		EABE64342704A641004F1F26 /* OneHeroStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneHeroStyle.swift; sourceTree = "<group>"; };
 		EABE64352704A641004F1F26 /* OneHeroStyleSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneHeroStyleSheet.swift; sourceTree = "<group>"; };
-		EABE64382704A6B3004F1F26 /* HomeScreenReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenReducer.swift; sourceTree = "<group>"; };
+		EABE64382704A6B3004F1F26 /* MainScreenReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenReducer.swift; sourceTree = "<group>"; };
 		EABE64392704A6B3004F1F26 /* AboutCharacterProfileReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCharacterProfileReducer.swift; sourceTree = "<group>"; };
 		EABE643A2704A6B3004F1F26 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		EABE643B2704A6B3004F1F26 /* RoutingReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutingReducer.swift; sourceTree = "<group>"; };
@@ -162,7 +163,6 @@
 		EABE64732704CE0F004F1F26 /* set_env_vars_qa.example.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set_env_vars_qa.example.sh; sourceTree = "<group>"; };
 		EABE64772704CE17004F1F26 /* set_env_vars.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set_env_vars.sh; sourceTree = "<group>"; };
 		EABE64792704CE22004F1F26 /* AppSecrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppSecrets.swift; path = Secrets/AppSecrets.swift; sourceTree = "<group>"; };
-		EABE647D2704ED32004F1F26 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		EABE647F2704F213004F1F26 /* PagedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedCollectionView.swift; sourceTree = "<group>"; };
 		EABE648127050794004F1F26 /* OneHeroProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneHeroProgressView.swift; sourceTree = "<group>"; };
 		EABE648427052424004F1F26 /* MarvelHistoryBio.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = MarvelHistoryBio.rtf; sourceTree = "<group>"; };
@@ -177,6 +177,8 @@
 		EABE648F27052950004F1F26 /* WorkSans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Black.otf"; sourceTree = "<group>"; };
 		EABE649027052950004F1F26 /* WorkSans-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Thin.otf"; sourceTree = "<group>"; };
 		EABE649127052951004F1F26 /* WorkSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Light.otf"; sourceTree = "<group>"; };
+		EABE649C270542B8004F1F26 /* MainScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenHeaderView.xib; sourceTree = "<group>"; };
+		EABE649E27054775004F1F26 /* MainScreenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,7 +288,7 @@
 			children = (
 				EABE64392704A6B3004F1F26 /* AboutCharacterProfileReducer.swift */,
 				EABE643A2704A6B3004F1F26 /* AppReducer.swift */,
-				EABE64382704A6B3004F1F26 /* HomeScreenReducer.swift */,
+				EABE64382704A6B3004F1F26 /* MainScreenReducer.swift */,
 				EABE643B2704A6B3004F1F26 /* RoutingReducer.swift */,
 			);
 			path = Reducers;
@@ -358,6 +360,8 @@
 			children = (
 				EABE64212704A3EB004F1F26 /* OneHeroCustomView.swift */,
 				EABE648127050794004F1F26 /* OneHeroProgressView.swift */,
+				EABE649C270542B8004F1F26 /* MainScreenHeaderView.xib */,
+				EABE649E27054775004F1F26 /* MainScreenHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -471,7 +475,6 @@
 			isa = PBXGroup;
 			children = (
 				EABE64602704A932004F1F26 /* CharacterCollectionViewCell.swift */,
-				EABE647D2704ED32004F1F26 /* LoadingCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				EABE64752704CE0F004F1F26 /* set_env_vars_production.example.sh in Resources */,
 				EABE63D027049BB3004F1F26 /* Assets.xcassets in Resources */,
 				EABE64672704C862004F1F26 /* generate_secrets.rb in Resources */,
+				EABE649D270542B8004F1F26 /* MainScreenHeaderView.xib in Resources */,
 				EABE648527052424004F1F26 /* MarvelHistoryBio.rtf in Resources */,
 				EABE63CE27049BB2004F1F26 /* Main.storyboard in Resources */,
 				EABE64742704CE0F004F1F26 /* set_env_vars_dev.example.sh in Resources */,
@@ -702,7 +706,7 @@
 				EABE644E2704A6CB004F1F26 /* CharacterProfileActions.swift in Sources */,
 				EABE64452704A6C3004F1F26 /* RoutingState.swift in Sources */,
 				EABE641C2704A3B5004F1F26 /* MarvelData.swift in Sources */,
-				EABE643C2704A6B3004F1F26 /* HomeScreenReducer.swift in Sources */,
+				EABE643C2704A6B3004F1F26 /* MainScreenReducer.swift in Sources */,
 				EABE64142704A3AD004F1F26 /* NetworkLogger.swift in Sources */,
 				EABE64082704A39D004F1F26 /* ParameterEncoding.swift in Sources */,
 				EABE63CB27049BB2004F1F26 /* MainViewController.swift in Sources */,
@@ -724,6 +728,7 @@
 				EABE644C2704A6CB004F1F26 /* Actions.swift in Sources */,
 				EABE63C727049BB2004F1F26 /* AppDelegate.swift in Sources */,
 				EABE64632704A958004F1F26 /* MainCollectionViewDataSource.swift in Sources */,
+				EABE649F27054775004F1F26 /* MainScreenHeaderView.swift in Sources */,
 				EABE642F2704A602004F1F26 /* Router.swift in Sources */,
 				EABE642D2704A602004F1F26 /* AppRouter.swift in Sources */,
 				EABE64472704A6C3004F1F26 /* AboutCharacterProfileState.swift in Sources */,
@@ -731,7 +736,6 @@
 				EABE63FC2704A383004F1F26 /* UIViewcontroller+Router.swift in Sources */,
 				EABE64132704A3AD004F1F26 /* HTTPTask.swift in Sources */,
 				EABE64802704F213004F1F26 /* PagedCollectionView.swift in Sources */,
-				EABE647E2704ED32004F1F26 /* LoadingCollectionViewCell.swift in Sources */,
 				EABE63FB2704A383004F1F26 /* URLCache+Extension.swift in Sources */,
 				EABE63FD2704A383004F1F26 /* Date+String.swift in Sources */,
 				EABE64222704A3EB004F1F26 /* OneHeroCustomView.swift in Sources */,

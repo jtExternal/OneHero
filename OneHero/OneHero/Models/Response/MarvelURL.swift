@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum MarvelURLDestTypes: String {
+    case wiki
+    case detail
+    case comiclink
+}
+
 public struct MarvelURL: Decodable {
     let type: String?
     let url: String?
@@ -21,5 +27,4 @@ public struct MarvelURL: Decodable {
         type = try values.decodeIfPresent(String.self, forKey: .type)
         url = try values.decodeIfPresent(String.self, forKey: .url)
     }
-    
 }

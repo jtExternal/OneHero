@@ -41,7 +41,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g30-2M-5ZD">
-                                <rect key="frame" x="0.0" y="310" width="414" height="552"/>
+                                <rect key="frame" x="0.0" y="360" width="414" height="536"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <attributedString key="attributedText">
                                     <fragment content="We weren't able to retrieve the summary for this character...instead here is a little about Marvel Universe">
@@ -1566,7 +1566,7 @@ Cg
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQx-RN-SVs">
-                                <rect key="frame" x="0.0" y="251" width="414" height="59"/>
+                                <rect key="frame" x="0.0" y="241" width="414" height="59"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="I7b-uS-a7u">
                                         <rect key="frame" x="8" y="8" width="398" height="43"/>
@@ -1583,35 +1583,105 @@ Cg
                                     <constraint firstAttribute="trailing" secondItem="I7b-uS-a7u" secondAttribute="trailing" constant="8" id="vXZ-42-nrt"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bAu-tL-dUw">
+                                <rect key="frame" x="0.0" y="300" width="414" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZE0-9M-VW5">
+                                        <rect key="frame" x="0.0" y="0.0" width="135.5" height="60"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Wiki" cornerStyle="dynamic">
+                                            <color key="baseForegroundColor" red="0.2193464041" green="0.20999169349999999" blue="0.21959212419999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAI-1B-Cld">
+                                        <rect key="frame" x="139.5" y="0.0" width="135" height="60"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Comics" cornerStyle="dynamic">
+                                            <color key="baseForegroundColor" red="0.2193464041" green="0.20999169349999999" blue="0.21959212419999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xn6-lG-hUy">
+                                        <rect key="frame" x="278.5" y="0.0" width="135.5" height="60"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Learn more" cornerStyle="dynamic">
+                                            <color key="baseForegroundColor" red="0.2193464041" green="0.20999169349999999" blue="0.21959212419999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="5VT-SH-VuC"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="S4M-Sm-Aum"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="xMY-R7-OGU" firstAttribute="leading" secondItem="S4M-Sm-Aum" secondAttribute="leading" id="0G3-y4-Zmc"/>
+                            <constraint firstItem="g30-2M-5ZD" firstAttribute="top" secondItem="bAu-tL-dUw" secondAttribute="bottom" id="8a1-ce-q1u"/>
+                            <constraint firstItem="CQx-RN-SVs" firstAttribute="trailing" secondItem="S4M-Sm-Aum" secondAttribute="trailing" id="9na-2T-niq"/>
                             <constraint firstItem="xMY-R7-OGU" firstAttribute="top" secondItem="TSB-JV-emN" secondAttribute="top" id="Ff6-mj-UeS"/>
                             <constraint firstItem="g30-2M-5ZD" firstAttribute="leading" secondItem="TSB-JV-emN" secondAttribute="leading" id="HqJ-QI-Ges"/>
-                            <constraint firstItem="g30-2M-5ZD" firstAttribute="top" secondItem="xMY-R7-OGU" secondAttribute="bottom" constant="10" id="KAG-Xr-jsQ"/>
+                            <constraint firstItem="CQx-RN-SVs" firstAttribute="leading" secondItem="S4M-Sm-Aum" secondAttribute="leading" id="KPx-HM-ekF"/>
                             <constraint firstItem="S4M-Sm-Aum" firstAttribute="trailing" secondItem="xMY-R7-OGU" secondAttribute="trailing" id="Mkq-Tl-9ll"/>
+                            <constraint firstItem="bAu-tL-dUw" firstAttribute="top" secondItem="CQx-RN-SVs" secondAttribute="bottom" id="Vj2-AG-Jyh"/>
                             <constraint firstItem="CQx-RN-SVs" firstAttribute="leading" secondItem="S4M-Sm-Aum" secondAttribute="leading" id="X4x-XE-PAL"/>
+                            <constraint firstItem="bAu-tL-dUw" firstAttribute="leading" secondItem="S4M-Sm-Aum" secondAttribute="leading" id="eXG-OQ-Nzj"/>
                             <constraint firstItem="Arc-zl-qmM" firstAttribute="leading" secondItem="S4M-Sm-Aum" secondAttribute="leading" constant="8" id="fDq-Vq-boJ"/>
-                            <constraint firstItem="S4M-Sm-Aum" firstAttribute="bottom" secondItem="g30-2M-5ZD" secondAttribute="bottom" id="jk1-vR-2Xv"/>
+                            <constraint firstItem="S4M-Sm-Aum" firstAttribute="bottom" secondItem="g30-2M-5ZD" secondAttribute="bottom" constant="-34" id="jk1-vR-2Xv"/>
                             <constraint firstItem="Arc-zl-qmM" firstAttribute="top" secondItem="S4M-Sm-Aum" secondAttribute="top" constant="8" id="kcp-1I-NUC"/>
+                            <constraint firstItem="bAu-tL-dUw" firstAttribute="top" secondItem="xMY-R7-OGU" secondAttribute="bottom" id="pe4-QR-izx"/>
                             <constraint firstItem="S4M-Sm-Aum" firstAttribute="trailing" secondItem="g30-2M-5ZD" secondAttribute="trailing" id="rNd-Wp-TEO"/>
+                            <constraint firstItem="bAu-tL-dUw" firstAttribute="trailing" secondItem="S4M-Sm-Aum" secondAttribute="trailing" id="vCf-2t-pg3"/>
                             <constraint firstItem="Arc-zl-qmM" firstAttribute="top" secondItem="S4M-Sm-Aum" secondAttribute="top" constant="8" id="vOQ-on-Dli"/>
-                            <constraint firstItem="g30-2M-5ZD" firstAttribute="top" secondItem="CQx-RN-SVs" secondAttribute="bottom" id="x8x-k5-lDo"/>
                             <constraint firstItem="CQx-RN-SVs" firstAttribute="trailing" secondItem="S4M-Sm-Aum" secondAttribute="trailing" id="xcy-x0-fm8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="Arc-zl-qmM" id="XNA-dD-7FB"/>
+                        <outlet property="comicsButton" destination="JAI-1B-Cld" id="EzK-2X-MVi"/>
                         <outlet property="headerCharacterImageView" destination="xMY-R7-OGU" id="P1G-jF-3lq"/>
+                        <outlet property="learnMoreButton" destination="xn6-lG-hUy" id="TCT-AU-THl"/>
                         <outlet property="textView" destination="g30-2M-5ZD" id="Qlo-VZ-cux"/>
                         <outlet property="titleText" destination="I7b-uS-a7u" id="tnw-pp-0dG"/>
+                        <outlet property="wikiButton" destination="ZE0-9M-VW5" id="ro5-qR-Z9n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFb-ya-tDm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089.8550724637682" y="137.94642857142856"/>
+            <point key="canvasLocation" x="886.95652173913049" y="121.875"/>
         </scene>
     </scenes>
     <resources>
