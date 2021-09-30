@@ -15,12 +15,35 @@ enum MarvelAPIServiceResult {
 
 protocol MarvelAPIServiceProtocol {
     func getCharacters(startIndex: Int, maxResults: Int, completion: @escaping (Result<MarvelAPIServiceResult>) -> Void)
+    func getCharactersStartingWith(startingWith: String, completion: @escaping (Result<MarvelAPIServiceResult>) -> Void)
     func getCharacter(id: String, completion: @escaping (Result<MarvelAPIServiceResult>) -> Void)
 }
 
 /// Logic that will make the network request and trigger callback
 struct MarvelAPIService: MarvelAPIServiceProtocol {
     let networkRouter = NetworkRouter<MarvelApiRequest>()
+    
+    func getCharactersStartingWith(startingWith: String, completion: @escaping (Result<MarvelAPIServiceResult>) -> Void) {
+        performAction(BaseMarvelResponse<[MarvelCharacter]>.self, using: .getCharactersStartingWith(nameStartsWith: startingWith)) { result in
+            guard result.error == nil else {
+                completion(.failure(result.error!))
+                return
+            }
+            
+            guard let characters = result.value?.first else {
+                completion(.success(.noResults))
+                return
+            }
+            
+            if let marvelCharacters = characters.data {
+                if marvelCharacters.results.count == 0 {
+                    completion(.success(.noResults))
+                } else {
+                    completion(.success(.getCharacters(marvelCharacters.results)))
+                }
+            }
+        }
+    }
     
     func getCharacters(startIndex: Int, maxResults: Int = Configuration.defaultPagingAmt, completion: @escaping (Result<MarvelAPIServiceResult>) -> Void) {
         performAction(BaseMarvelResponse<[MarvelCharacter]>.self, using: .getCharacters(startIndex: startIndex, maxResults: maxResults)) { result in

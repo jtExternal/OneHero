@@ -59,7 +59,6 @@ class AboutCharacterViewController: UIViewController {
     }
     
     @IBAction func close(_ sender: Any) {
-        // TODO dispatch close
         dismiss(animated: true)
     }
     

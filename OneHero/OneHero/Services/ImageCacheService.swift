@@ -33,12 +33,13 @@ class ImageServiceHelper {
         } else {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 guard error == nil, let urlResponse = response as? HTTPURLResponse, urlResponse.statusCode == 200, let data = data else {
-                    // Your application should handle these errors appropriately depending on the kind of error.
-                    
+                    // TODO Improve handling of these errors
+                    if let err = error {
+                        Log.e(err)
+                    }
                     DispatchQueue.main.async {
                         completion(nil)
                     }
-                    
                     return
                 }
                 

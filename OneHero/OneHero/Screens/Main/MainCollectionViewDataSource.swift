@@ -27,23 +27,6 @@ class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColl
         return marvelCharacters?.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-      switch  kind {
-      case UICollectionView.elementKindSectionHeader:
-        let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CustomLayout.Element.sectionHeader.id, for: indexPath)
-        if let sectionHeaderView = supplementaryView as? SectionHeaderView {
-          sectionHeaderView.title.text = "sections[indexPath.section]"
-        }
-        return supplementaryView
-
-      case UICollectionView.elementKindSectionFooter:
-        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CustomLayout.Element.sectionFooter.id, for: indexPath)
-
-      default:
-        fatalError("Unexpected element kind")
-      }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseId, for: indexPath) as? CharacterCollectionViewCell else {
             return UICollectionViewCell()
@@ -62,11 +45,11 @@ class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColl
                 }
             }
         }
-        
         cell.characterData = data
         
         return cell
     }
+    
 }
 
 

@@ -53,7 +53,7 @@
 		EABE643F2704A6B3004F1F26 /* RoutingReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE643B2704A6B3004F1F26 /* RoutingReducer.swift */; };
 		EABE64442704A6C3004F1F26 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64402704A6C3004F1F26 /* AppState.swift */; };
 		EABE64452704A6C3004F1F26 /* RoutingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64412704A6C3004F1F26 /* RoutingState.swift */; };
-		EABE64462704A6C3004F1F26 /* HomeScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64422704A6C3004F1F26 /* HomeScreenState.swift */; };
+		EABE64462704A6C3004F1F26 /* MainScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64422704A6C3004F1F26 /* MainScreenState.swift */; };
 		EABE64472704A6C3004F1F26 /* AboutCharacterProfileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64432704A6C3004F1F26 /* AboutCharacterProfileState.swift */; };
 		EABE644C2704A6CB004F1F26 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64482704A6CB004F1F26 /* Actions.swift */; };
 		EABE644D2704A6CB004F1F26 /* RoutingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE64492704A6CB004F1F26 /* RoutingAction.swift */; };
@@ -142,7 +142,7 @@
 		EABE643B2704A6B3004F1F26 /* RoutingReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutingReducer.swift; sourceTree = "<group>"; };
 		EABE64402704A6C3004F1F26 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		EABE64412704A6C3004F1F26 /* RoutingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutingState.swift; sourceTree = "<group>"; };
-		EABE64422704A6C3004F1F26 /* HomeScreenState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenState.swift; sourceTree = "<group>"; };
+		EABE64422704A6C3004F1F26 /* MainScreenState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenState.swift; sourceTree = "<group>"; };
 		EABE64432704A6C3004F1F26 /* AboutCharacterProfileState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCharacterProfileState.swift; sourceTree = "<group>"; };
 		EABE64482704A6CB004F1F26 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		EABE64492704A6CB004F1F26 /* RoutingAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutingAction.swift; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 			children = (
 				EABE64432704A6C3004F1F26 /* AboutCharacterProfileState.swift */,
 				EABE64402704A6C3004F1F26 /* AppState.swift */,
-				EABE64422704A6C3004F1F26 /* HomeScreenState.swift */,
+				EABE64422704A6C3004F1F26 /* MainScreenState.swift */,
 				EABE64412704A6C3004F1F26 /* RoutingState.swift */,
 			);
 			path = State;
@@ -715,7 +715,7 @@
 				EABE645E2704A88D004F1F26 /* StoryboardNames.swift in Sources */,
 				EABE64442704A6C3004F1F26 /* AppState.swift in Sources */,
 				EABE64262704A405004F1F26 /* AboutCharacterViewController.swift in Sources */,
-				EABE64462704A6C3004F1F26 /* HomeScreenState.swift in Sources */,
+				EABE64462704A6C3004F1F26 /* MainScreenState.swift in Sources */,
 				EABE641D2704A3B5004F1F26 /* BaseMarvelResponse.swift in Sources */,
 				EABE647A2704CE22004F1F26 /* AppSecrets.swift in Sources */,
 				EABE64122704A3AD004F1F26 /* EndPointType.swift in Sources */,

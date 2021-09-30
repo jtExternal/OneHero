@@ -12,14 +12,18 @@ private let config = Configuration()
 enum MarvelApiRequest {
     // GET /v1/public/characters
     case getCharacters(startIndex: Int, maxResults: Int)
+    // GET /v1/public/characters?nameStartsWith
+    case getCharactersStartingWith(nameStartsWith: String)
     // GET /v1/public/characters/{characterId}
     case getCharacter(characterId: String)
+    
     
     enum DictKeys: String {
         case ts
         case hash
         case apiKey = "apikey"
         case characterId
+        case nameStartsWith
         case limit
         case offset
     }
@@ -35,8 +39,11 @@ extension MarvelApiRequest: EndPointType {
         switch self {
         case .getCharacters(_,_):
             return "characters"
+        case .getCharactersStartingWith(_):
+            return "characters"
         case let .getCharacter(characterId):
             return "characters/\(characterId)"
+
         }
     }
     
@@ -60,6 +67,14 @@ extension MarvelApiRequest: EndPointType {
                                                                 DictKeys.offset.rawValue: startIndex,
                                                                 DictKeys.limit.rawValue: maxResults],
                                                                 additionHeaders: headers)
+        case let .getCharactersStartingWith(nameStartsWith):
+            return .requestParametersAndHeaders(bodyParameters: nil,
+                                                bodyEncoding: .urlEncoding,
+                                                urlParameters: [DictKeys.ts.rawValue: timeStamp,
+                                                                DictKeys.hash.rawValue: md5Hash,
+                                                                DictKeys.apiKey.rawValue: config.environment.publicApiKey,
+                                                                DictKeys.nameStartsWith.rawValue: nameStartsWith],
+                                                                additionHeaders: headers)
         default:
             return .request
         }
@@ -77,6 +92,8 @@ extension MarvelApiRequest: EndPointType {
         case .getCharacter(_):
             return nil
         case .getCharacters:
+            return nil
+        case .getCharactersStartingWith(_):
             return nil
         }
     }

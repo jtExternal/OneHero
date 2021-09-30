@@ -32,11 +32,12 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
-        
+   
         collectionView.setCollectionViewLayout(layout, animated: false)
         setupRefreshControl()
-        fetchHeroes(page: 0, shouldResetList: true)
+        fetchNotifications(page: 0, shouldResetList: true)
         loadingInit = false
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +76,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     }
     
     @objc private func refreshList(_: Any) {
-        fetchHeroes(page: 0, shouldResetList: true)
+        fetchNotifications(page: 0, shouldResetList: true)
     }
     
     func hideRefreshControl() {
@@ -84,7 +85,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         }
     }
     
-    private func fetchHeroes(page: Int, shouldResetList: Bool = false) {
+    private func fetchNotifications(page: Int, shouldResetList: Bool = false) {
         if shouldResetList {
             store.dispatch(HomeScreenActions.HomeScreenAction.reset)
         }
@@ -230,11 +231,32 @@ extension MainViewController: PagedCollectionViewDelegate {
         // Typically request your data over network, update your data source and refresh UI
         //    totalCollectionItems += collectionView.elementsPerPage
         if !isLoading {
-            fetchHeroes(page: marvelCharactersCount + collectionView.elementsPerPage)
+            fetchNotifications(page: marvelCharactersCount + collectionView.elementsPerPage)
             completion(collectionView.elementsPerPage, nil)
         }
         
         //    collectionView.reloadData()
     }
-}
+    
+    // suplementary views (header and footer)
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "sectionHeaderView", for: indexPath) as! MainScreenHeaderView
+//              headerView.label.text = indexPath.section == 0 ? "1" : "2"
+              return headerView
+        
+        
+        var reusableview = UICollectionReusableView()
 
+        if kind == UICollectionView.elementKindSectionHeader {
+            
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeaderView", for: indexPath) as! MainScreenHeaderView
+            headerView.backgroundColor = UIColor.purple
+//            headerView.headerLabel.text = "This is the header"
+            reusableview = headerView
+        }
+        
+        return reusableview
+    }
+  
+}
