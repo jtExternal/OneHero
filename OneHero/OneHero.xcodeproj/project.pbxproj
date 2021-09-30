@@ -527,6 +527,14 @@
 		EABE6483270523D2004F1F26 /* PlaceholderText */ = {
 			isa = PBXGroup;
 			children = (
+				EABE648427052424004F1F26 /* MarvelHistoryBio.rtf */,
+			);
+			path = PlaceholderText;
+			sourceTree = "<group>";
+		};
+		EABE648627052949004F1F26 /* work-sans */ = {
+			isa = PBXGroup;
+			children = (
 				EABE648D27052950004F1F26 /* SIL Open Font License.txt */,
 				EABE648F27052950004F1F26 /* WorkSans-Black.otf */,
 				EABE648C27052950004F1F26 /* WorkSans-Bold.otf */,
@@ -538,14 +546,6 @@
 				EABE648727052950004F1F26 /* WorkSans-Regular.otf */,
 				EABE648B27052950004F1F26 /* WorkSans-SemiBold.otf */,
 				EABE649027052950004F1F26 /* WorkSans-Thin.otf */,
-				EABE648427052424004F1F26 /* MarvelHistoryBio.rtf */,
-			);
-			path = PlaceholderText;
-			sourceTree = "<group>";
-		};
-		EABE648627052949004F1F26 /* work-sans */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = "work-sans";
 			sourceTree = "<group>";

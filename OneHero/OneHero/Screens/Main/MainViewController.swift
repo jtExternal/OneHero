@@ -237,26 +237,4 @@ extension MainViewController: PagedCollectionViewDelegate {
         
         //    collectionView.reloadData()
     }
-    
-    // suplementary views (header and footer)
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "sectionHeaderView", for: indexPath) as! MainScreenHeaderView
-//              headerView.label.text = indexPath.section == 0 ? "1" : "2"
-              return headerView
-        
-        
-        var reusableview = UICollectionReusableView()
-
-        if kind == UICollectionView.elementKindSectionHeader {
-            
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeaderView", for: indexPath) as! MainScreenHeaderView
-            headerView.backgroundColor = UIColor.purple
-//            headerView.headerLabel.text = "This is the header"
-            reusableview = headerView
-        }
-        
-        return reusableview
-    }
-  
 }

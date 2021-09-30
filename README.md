@@ -9,8 +9,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- Xcode 10.1
-- iOS 10.0+
+- Xcode 13
+- iOS 14.7+
 
 
 ### Installation
@@ -57,3 +57,42 @@ Adding a new secret:
 3. Build project and you should the generated file update properly
 
 Make sure you DONT commit any of these files. The only files permissible are the .example and these should contain blank values for the key/value pairs.
+
+### Logging
+
+```
+Log.d("Navigation state updated") where 'd' can be either e,i,d,v,w,s depending on message level
+```
+
+### Custom Views, Styling & Colors
+
+Project has a Theme folder that contains all of the custom reusable UI components. AceAppButton, AceAppTextField. If there is a style that is used in more than one place in app then add it the ACEMainStyleSheet as shown below in code sample.
+
+Most of the views are inspectable and of IBDesignable to easily modify. If changes are made via IB then please update values in `UIColor.Palette` and Main stylesheet.
+
+```
+static let aceUnderlinedButtonClear = Style<UIButton> {
+let attribs : [NSAttributedString.Key: Any] = [
+NSAttributedString.Key.font : Assets.Font.workSansRegFont.getFont().withSize(13.0),
+NSAttributedString.Key.foregroundColor : UIColor.Palette.shamrockGreen,
+NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue]
+$0.backgroundColor = UIColor.clear
+let attributeString = NSMutableAttributedString(string: $0.titleLabel?.text ?? "",
+attributes: attribs)
+$0.setAttributedTitle(attributeString, for: .normal)
+}
+```
+
+Apply style to a view
+
+```
+self.apply(Stylesheet.Main.aceUnderlinedButtonClear) where 'self' is of type UIButton
+```
+
+The app reads from an extension on UIColor called Palette. `UIColor.Palette` contains all of the reusable colors.
+
+Get a color:
+
+```
+let buttonBackgroundColor = UIColor.Palette.manatee
+```
