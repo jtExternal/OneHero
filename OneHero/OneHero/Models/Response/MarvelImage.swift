@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Thumbnail: Decodable {
+public struct MarvelImage: Decodable {
     public let url: URL
     
     enum ImageKeys: String, CodingKey {
