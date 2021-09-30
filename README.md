@@ -66,12 +66,12 @@ Log.d("Navigation state updated") where 'd' can be either e,i,d,v,w,s depending 
 
 ### Custom Views, Styling & Colors
 
-Project has a Theme folder that contains all of the custom reusable UI components. AceAppButton, AceAppTextField. If there is a style that is used in more than one place in app then add it the ACEMainStyleSheet as shown below in code sample.
+Project has a Theme folder that contains all of the custom reusable UI components. AppButton, AppTextField. If there is a style that is used in more than one place in app then add it the MainStyleSheet as shown below in code sample.
 
 Most of the views are inspectable and of IBDesignable to easily modify. If changes are made via IB then please update values in `UIColor.Palette` and Main stylesheet.
 
 ```
-static let aceUnderlinedButtonClear = Style<UIButton> {
+static let underlinedButtonClear = Style<UIButton> {
 let attribs : [NSAttributedString.Key: Any] = [
 NSAttributedString.Key.font : Assets.Font.workSansRegFont.getFont().withSize(13.0),
 NSAttributedString.Key.foregroundColor : UIColor.Palette.shamrockGreen,
@@ -86,7 +86,7 @@ $0.setAttributedTitle(attributeString, for: .normal)
 Apply style to a view
 
 ```
-self.apply(Stylesheet.Main.aceUnderlinedButtonClear) where 'self' is of type UIButton
+self.apply(Stylesheet.Main.underlinedButtonClear) where 'self' is of type UIButton
 ```
 
 The app reads from an extension on UIColor called Palette. `UIColor.Palette` contains all of the reusable colors.
@@ -95,4 +95,127 @@ Get a color:
 
 ```
 let buttonBackgroundColor = UIColor.Palette.manatee
+
+```
+## Architecture
+
+The folder structure is pretty straightforward. It's divided into common, vendor, state(redux), configurations, screens, services, resources, scripts.
+
+The project is utilizing a Redux unidirectional data flow pattern. The specific Swift Redux implementation can found here on [ReSwift's](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwiYhMHE94ThAhVrFTQIHbDQA7kQFjAAegQIABAC&url=https%3A%2F%2Fgithub.com%2FReSwift%2FReSwift&usg=AOvVaw2wEAeFauovveN4srzyvalb) page. ReSwift was chosen due to it's popularity, support and small library size. Redux implementation like this allows Android and iOS to follow a similar pattern to make sure codebases are not too far apart. Also, helps separate app into components.
+
+_Actions_ - Allow views to trigger an 'action' to take place. Such as navigate to the dashboard upon clicking a button. Only through an action can the state be updated.
+
+_State_ - Keeps track of the app's current state in one place. Main app state is divided into meaningful substates that correspond to a use case.
+
+_Views_ - Views can subscribe/listen to state changes allowing are UI components to be dynamic based on app state.
+
+_Services_ - Contain all of are API service requests, logging implementation, session timeout and logic that deserves to be placed in a services layer.
+
+_Configurations_ - Build configurations to separate dev, staging and production environments.
+
+_Routing_ - App navigation routing. Logic to direct users to the correct screen based upon current app state.
+
+Display a new screen by providing destination view id and method of presenting view.
+
+```
+store.dispatch(RoutingAction(destination: .termsConditionInstruction, transitionType: .push))
+```
+
+_Screens_ - All of the screens within app are contained in a single spot. Screens are then divided into logical components that make sense based upon use case. Authentication would contain screens related to login, logout, reset password, etc.
+
+_Common_ - This is used for Utilities, extensions, and generic classes that are shareable with whole application
+
+_Vendor_ - Used for containing third party code
+
+### Scenes
+
+Holds all the screens such as Login and Register view controllers. Currently the screens are grouped by module or feature. For instance the Authentication folder contains Landing, Register, and Login screens. Each screen has a
+
+Creating a new screen such as a Login screen
+
+1. Create new folder if large enough
+2. Create storyboard and viewController for screen
+
+### Screen Management
+
+`OneHeroScreens` contains 2 enums (StoryboardNames & RoutingDestination). RoutingDestination represents each screen id and should match whats in the Storyboard. StoryboardNames represents the name of each storyboard.
+
+Pushing a new view onto main navigation stack
+
+```
+store.dispatch(RoutingAction(destination: .forgotLogin, transitionType: .push))
+```
+
+Pushing & popping view onto the navigation stack coming using hamburger menu
+
+```
+
+Navigating back
+store.dispatch(RoutingAction(destination: .undefined, transitionType: .backUsing(navType: .SideMenuNav), animationType: .standard))
+
+Pushing
+ store.dispatch(RoutingAction(destination: .faqs, transitionType: .pushFromSidemenu, animationType: .standard))
+
+ Showing an alert
+ let alert = AlertViewModel(message: "Alert message", title: "")
+ store.dispatch(RoutingAction(destination: .alert(alert), transitionType: .alert, animationType: .standard))
+```
+
+Lets work through an example to setup a Login Screen.
+
+1. First create a folder named Login, then add your view controller and storyboard
+2. Next add your new storyboard id to `OneHeroScreens` and view controller string id
+3. Follow below to learn how to subscribe to state changes
+
+### Listen/Subscribe to state changes
+
+```
+Subscribe and select on substate of main AppState in the `viewWillAppear` method
+        store.subscribe(self) {
+            $0.select {
+                $0.authenticationState
+            }
+        }
+      }
+```
+
+```
+Unsubscribe to prevent unnecessary state changes when view isn't in focus `viewWillDisappear` method
+         store.unsubscribe(self)
+```
+
+```
+Then extend `StoreSubscriber` to get new state updates
+// MARK: - Login State Changes
+extension LoginViewController: StoreSubscriber {
+    func newState(state: AuthenticationState) {
+      switch state.signInState {
+ case .success:
+     hideLoading()
+     if state.mfaRequired{
+         finishSuccessLogIn()
+     }else{
+         store.dispatch(RoutingAction.init(destination: .home, transitionType: .root))
+     }
+
+     break
+ case .notSignedIn:
+     hideLoading()
+     Log.d("Not signed in.")
+     break
+ case .signingIn:
+     DispatchQueue.main.async {
+         OneHeroProgressView.shared.showProgressView()
+     }
+     Log.d("Signing IN.....")
+     break
+ case .failure:
+     hideLoading()
+     handleLoginFailAttept(error: state.attemptError)
+
+     Log.d("Failure.....")
+     break
+ }
+    }
+  }
 ```
