@@ -93,8 +93,6 @@
 
 /* Begin PBXFileReference section */
 		49FAC8C5F5034D6971A5EAFB /* Pods_OneHero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneHero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACF5C54983130EFE57097B14 /* Pods-OneHero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneHero.debug.xcconfig"; path = "Target Support Files/Pods-OneHero/Pods-OneHero.debug.xcconfig"; sourceTree = "<group>"; };
-		BD0195F1B3DC7A002CB4B916 /* Pods-OneHero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneHero.release.xcconfig"; path = "Target Support Files/Pods-OneHero/Pods-OneHero.release.xcconfig"; sourceTree = "<group>"; };
 		EABE63C327049BB2004F1F26 /* OneHero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneHero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EABE63C627049BB2004F1F26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EABE63C827049BB2004F1F26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,21 +199,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ACB0B49C70317E387DEFB8F3 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				ACF5C54983130EFE57097B14 /* Pods-OneHero.debug.xcconfig */,
-				BD0195F1B3DC7A002CB4B916 /* Pods-OneHero.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		EABE63BA27049BB2004F1F26 = {
 			isa = PBXGroup;
 			children = (
 				EABE63C527049BB2004F1F26 /* OneHero */,
 				EABE63C427049BB2004F1F26 /* Products */,
-				ACB0B49C70317E387DEFB8F3 /* Pods */,
 				71A779D7CAF245D9607E0D31 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -905,7 +893,6 @@
 		};
 		EABE63D827049BB3004F1F26 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ACF5C54983130EFE57097B14 /* Pods-OneHero.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -937,7 +924,6 @@
 		};
 		EABE63D927049BB3004F1F26 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD0195F1B3DC7A002CB4B916 /* Pods-OneHero.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
